@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // fetch('/endorsement').then(res => res.json()).then(data => {setCurrentEndorsement(data.endorsement);});
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <InputID />
     </div>
+  );
+}
+
+/**
+ * Component to allow user to submit their BattleNet ID
+ */
+function InputID() {
+  return (
+      <input className = "tag-input" type = "text" 
+      placeholder = "Enter a BattleTag#1234..." 
+      onKeyDown = {(e) => 
+          {if (e.key === "Enter") {
+              const battleNetID = e.target.value.split("#");
+              const battleNetIDDict = {name:battleNetID[0], tag:battleNetID[1]};
+          }}
+      }
+      />
   );
 }
 
