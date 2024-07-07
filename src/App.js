@@ -1,8 +1,6 @@
 import './App.css';
 
 function App() {
-  // fetch('/endorsement').then(res => res.json()).then(data => {setCurrentEndorsement(data.endorsement);});
-
   return (
     <div className="App">
       <InputID />
