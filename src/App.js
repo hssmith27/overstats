@@ -19,8 +19,8 @@ function InputID() {
       placeholder = "Enter a BattleTag#1234..." 
       onKeyDown = {(e) => 
           {if (e.key === "Enter") {
-              const battleNetID = e.target.value.split("#");
-              const battleNetIDDict = {name:battleNetID[0], tag:battleNetID[1]};
+              const battleNetID = e.target.value.replace("#", "-");
+              fetch('/stats/' + battleNetID).then(res => res.json()).then(data => console.log(data));
           }}
       }
       />
