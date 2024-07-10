@@ -1,8 +1,8 @@
-.App {
+#app {
   text-align: center;
 }
 
-.tag-input {
+#tag-input {
   text-align: center;
   font-size: 30px;
   width: 45%;
@@ -12,4 +12,36 @@
   border-radius: 15px;
   background-color: lightgray;
   outline: none;
+}
+
+#player-banner {
+  background-color: rgb(20, 35, 75);
+  width: 95%;
+  color: lightgrey;
+  border-radius: 30px;
+  display: inline-block;
+  font-family: sans-serif;
+  margin: 10px;
+  padding: 10px;
+
+  img {
+    display: inline;
+    width: 12.5%;
+    margin: 20px;
+  }
+
+  h1 {
+    display: inline;
+    font-size: 80px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+#icon {
+  float: left;
+}
+
+#endorsement {
+  float: right;
 }
