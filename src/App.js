@@ -28,7 +28,9 @@ function InputID({stats, setStats}) {
       onKeyDown = {(e) => 
           {if (e.key === "Enter") {
               const battleNetID = e.target.value.replace("#", "-");
-              fetch('/stats/' + battleNetID).then(res => res.json()).then(data => setStats(data["stats"]));
+              fetch('/stats/' + battleNetID).then(res => res.json()).then(data => setStats(data["stats"])).then(
+                document.getElementById("player-summary").style.display = "block"
+              );
           }}
       }
       />
