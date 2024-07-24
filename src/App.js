@@ -3,11 +3,18 @@ import { useState } from 'react';
 
 function App() {
   const [stats, setStats] = useState({
-    endorsementIcon: "https://static.playoverwatch.com/img/pages/career/icons/endorsement/5-8697f241ca.svg#icon",
-    gamesLost: 1,
-    gamesWon: 1,
-    icon: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/c3090e3a1dccc58f143ff53801bc0cecb139f0eb1278f157d0b5e29db9104bed.png",
-    name: "Player Name"
+    endorsement: { 
+      frame: "https://static.playoverwatch.com/img/pages/career/icons/endorsement/5-8697f241ca.svg#icon",
+    },
+    general: {
+      games_lost: 1,
+      games_won: 1,
+      winrate: 50
+    },
+    avatar: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/c3090e3a1dccc58f143ff53801bc0cecb139f0eb1278f157d0b5e29db9104bed.png",
+    username: "Player Name",
+    title: "Default Title",
+    namecard: "https://d15f34w2p8l1cc.cloudfront.net/overwatch/2238c652dbc8b3983c49023eb5acd8a17baad5711f065bb1af81dfb96b71b42e.png"
   })
 
   return (
@@ -28,9 +35,7 @@ function InputID({stats, setStats}) {
       onKeyDown = {(e) => 
           {if (e.key === "Enter") {
               const battleNetID = e.target.value.replace("#", "-");
-              fetch('/stats/' + battleNetID).then(res => res.json()).then(data => setStats(data["stats"])).then(
-                document.getElementById("player-summary").style.display = "block"
-              )
+              fetch('/summary/' + battleNetID).then(res => res.json()).then(data => setStats(data)).then(document.getElementById("player-summary").style.display = "block");
           }}
       }
       />
@@ -42,6 +47,7 @@ function PlayerSummary({stats}) {
     <div id = "player-summary">
       <TitleCard stats = {stats} />
       <WinRate stats = {stats} />
+      <NameCard stats = {stats} />
     </div>
   )
 }
@@ -49,9 +55,9 @@ function PlayerSummary({stats}) {
 function TitleCard({stats}) {
   return (
     <div id = "player-banner">
-        <img id = "icon" src = {stats.icon} class></img>
-        <h1>{stats.name}</h1>
-        <img id = "endorsement" src = {stats.endorsementIcon}></img>
+        <img id = "icon" src = {stats.avatar} class></img>
+        <h1>{stats.username}</h1>
+        <img id = "endorsement" src = {stats.endorsement.frame}></img>
       </div>
   );
 }
@@ -61,10 +67,19 @@ function WinRate({stats}) {
     <div id = "win-rate">
       <h3>Win Rate </h3>
       <hr />
-      <div id = "win-rate-graph">{Math.round(stats.gamesWon/(stats.gamesWon + stats.gamesLost) * 10000) / 100}%</div>
-      <h4>Total Games: {stats.gamesWon + stats.gamesLost}</h4>
+      <h3>{stats.general.winrate}%</h3>
+      <h4>Total Games: {stats.general.games_won + stats.general.games_lost}</h4>
     </div>
   );
+}
+
+function NameCard({stats}) {
+  return (
+    <div id = "name-card">
+      <h3>{stats.title}</h3>
+      <img id = "namecard" src = {stats.namecard} />
+    </div>
+  )
 }
 
 export default App;

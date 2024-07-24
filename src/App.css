@@ -49,14 +49,29 @@
 #win-rate {
   background-color: rgb(20, 35, 75);
   font-size: 50px;
-  width: 45%;
+  width: 44.5%;
   border-radius: 30px;
-  margin: 10px;
+  margin: 15px;
   padding: 10px;
+  float: left;
 
   hr {
     border: 5px solid;
     border-radius: 10px;
+  }
+}
+
+#name-card {
+  background-color: rgb(20, 35, 75);
+  font-size: 50px;
+  width: 44.5%;
+  border-radius: 30px;
+  margin: 15px;
+  padding: 10px;
+  float: right;
+  
+  img {
+    width: 90%;
   }
 }
 
