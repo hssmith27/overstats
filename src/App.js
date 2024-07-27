@@ -1,6 +1,10 @@
 import './App.css';
 import { useState } from 'react';
 
+/**
+ * Main component, state gives filler stats that are updated
+ * when player enters their username
+ */
 function App() {
   const [stats, setStats] = useState({
     endorsement: { 
@@ -42,6 +46,9 @@ function InputID({stats, setStats}) {
   );
 }
 
+/**
+ * Component that encloses whole player summary
+ */
 function PlayerSummary({stats}) {
   return (
     <div id = "player-summary">
@@ -52,6 +59,9 @@ function PlayerSummary({stats}) {
   )
 }
 
+/**
+ * Component that shows a player's icon and endorsement level
+ */
 function TitleCard({stats}) {
   return (
     <div id = "player-banner">
@@ -62,6 +72,9 @@ function TitleCard({stats}) {
   );
 }
 
+/**
+ * Component that showcases a player's win rate
+ */
 function WinRate({stats}) {
   return (
     <div id = "win-rate">
@@ -73,6 +86,9 @@ function WinRate({stats}) {
   );
 }
 
+/**
+ * Component that showcases a player's name card and title
+ */
 function NameCard({stats}) {
   return (
     <div id = "name-card">
