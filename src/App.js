@@ -40,8 +40,15 @@ function InputID({stats, setStats}) {
           {if (e.key === "Enter") {
               const battleNetID = e.target.value.replace("#", "-");
               const fetchStats = fetch('/summary/' + battleNetID).then(res => res.json());
-              fetchStats.then(tempStats => setStats(tempStats))
-              .then(tempStats => document.getElementById("player-summary").style.display = "inline-block");
+              fetchStats.then (res => {
+                if (!res.error) {
+                  fetchStats.then(tempStats => setStats(tempStats))
+                  .then(tempStats => document.getElementById("player-summary").style.display = "inline-block");
+                }
+                else {
+                  console.log("Player not found");
+                }
+              })
           }}
       }
       />
