@@ -39,7 +39,7 @@ function InputID({stats, setStats}) {
       onKeyDown = {(e) => 
           {if (e.key === "Enter") {
               const battleNetID = e.target.value.replace("#", "-");
-              fetch('/summary/' + battleNetID).then(res => res.json()).then(data => setStats(data)).then(document.getElementById("player-summary").style.display = "block");
+              fetch('/summary/' + battleNetID).then(res => res.json()).then(data => setStats(data)).then(document.getElementById("player-summary").style.display = "inline-block");
           }}
       }
       />
